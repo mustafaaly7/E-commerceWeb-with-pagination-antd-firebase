@@ -44,7 +44,7 @@ function Home() {
                     <div className="flex flex-wrap -m-4">
 
                         {loader ? (
-                            <h1 className="text-center font-bold text-6xl ">Loading.....</h1>
+                            <h1 className=" mx-auto text-center font-bold text-6xl text-black ">Loading.....</h1>
 
                         ) : (
                             homeProducts.map((data) => (

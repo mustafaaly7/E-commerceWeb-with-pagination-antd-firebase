@@ -7,6 +7,9 @@
 .authPagecontents{
     
 }
+.appFooter{
+    top: auto
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
