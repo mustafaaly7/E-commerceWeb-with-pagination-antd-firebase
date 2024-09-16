@@ -6,7 +6,7 @@ return(
     <>
  <>
   {/*Footer container*/}
-  <footer className="flex flex-col items-center bg-zinc-50 text-center text-surface bg-gray-400 text-black">
+  <footer className="flex flex-col items-center bg-zinc-50 text-center shadow border text-surface bg-gray-400 text-black">
     <div className="container pt-9">
       {/* Social media icons container */}
       <div className="mb-6 flex justify-center space-x-2">

@@ -1,7 +1,9 @@
+import { Card } from "../components/card"
+
 function Orders(){
     return(
         <>
-        <h1>Orders</h1>
+        <Card/>
         </>
     )
 }

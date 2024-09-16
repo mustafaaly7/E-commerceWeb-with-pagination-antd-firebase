@@ -1,30 +1,70 @@
+import { Link } from "react-router-dom";
 import { Card } from "../components/card"
 import { Button } from "antd";
+import { useEffect, useState } from "react";
 
-function Home(){
-    return(
+
+function Home() {
+    const [homeProducts, setHomeProducts] = useState([])
+    const [loader, setLoader] = useState(false)
+
+    useEffect(() => {
+        try {
+            setLoader(true)
+            fetch('https://dummyjson.com/products?limit=12')
+                .then(res => res.json())
+                .then((data) => {
+                    setHomeProducts(data.products)
+                    setLoader(false)
+
+                });
+
+
+        } catch (error) {
+            console.log(error.message);
+
+
+        }
+
+
+
+    }, [])
+    // console.log(homeProducts.title);
+    return (
         <>
-        <div className="flex justify-around my-6">
-        <h1 className="text-center font-bold text-3xl ">Trending Products</h1> 
-        <Button className="font-bold"> See All</Button> 
+            <div className="flex justify-around my-6">
+                <h1 className="text-center font-bold text-3xl underline ">Trending Products</h1>
+                <Link to={"/products"}>
+                    <Button className="font-semi-bold" type="primary"> See All</Button>
+                </Link>
+            </div>
+            <section className="text-gray-600 body-font">
 
-        </div>
-        <section className="text-gray-600 body-font">
-  <div className="container px-5 py-24 mx-auto">
-    <div className="flex flex-wrap -m-4">
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        </div>
-  </div>
-</section>
+                <div className="container px-5 py-24 mx-auto">
+                    <div className="flex flex-wrap -m-4">
+
+                        {loader ? (
+                            <h1 className="text-center font-bold text-6xl ">Loading.....</h1>
+
+                        ) : (
+                            homeProducts.map((data) => (
+                                // console.log(data.thumbnail)
+                                <Card product={data} key={data.id} />
+
+
+
+                            )))}
+
+
+
+                    </div>
+                </div>
+            </section>
 
         </>
     )
 }
 
-export{
+export {
     Home
 }
