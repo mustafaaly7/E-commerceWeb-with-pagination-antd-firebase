@@ -49,8 +49,9 @@ function Home() {
                         ) : (
                             homeProducts.map((data) => (
                                 // console.log(data.thumbnail)
+                                <Link className="lg:w-1/4 md:w-1/2 p-4 w-full" to={`/product/id/${data.id}`}>
                                 <Card product={data} key={data.id} />
-
+                                </Link>
 
 
                             )))}
