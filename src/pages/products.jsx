@@ -1,4 +1,4 @@
-import {  Button, Pagination } from "antd";
+import { Button, Pagination } from "antd";
 import { useEffect, useState } from "react";
 import { Card } from "../components/card"
 
@@ -8,11 +8,13 @@ import { Link } from "react-router-dom";
 function Products() {
     const [products, setProducts] = useState([])
     const [loader, setLoader] = useState(false)
-
+    const [skip, setSkip] = useState(0)
+    const[total,setTotal]=useState(20)
+    const[limit ,setLimit]=useState(16)
     useEffect(() => {
         try {
             setLoader(true)
-            fetch('https://dummyjson.com/products?limit=12')
+            fetch(`https://dummyjson.com/products?limit=16&skip=${skip}`)
                 .then(res => res.json())
                 .then((data) => {
                     setProducts(data.products)
@@ -29,8 +31,8 @@ function Products() {
 
 
 
-    }, [])
-    console.log(products);
+    }, [skip])
+    // console.log(products);
 
     return (
         <>
@@ -45,20 +47,23 @@ function Products() {
 
                             products.map((data) => (
                                 <div className="lg:w-1/4 md:w-1/2 p-4 md:mx-auto mx-auto   shadow my-1  " >
-                                    <Card product={data}  />
-                                <Link  to={`/product/id/${data.id}`} key={data.id} >
-                                    <Button>See More </Button>
-                                </Link>
+                                    <Card product={data} />
+                                    <Link to={`/product/id/${data.id}`} key={data.id} >
+                                        <Button>See More </Button>
+                                    </Link>
                                 </div>
                                 // console.log(data.thumbnail)
 
                             )))}
-
                     </div>
                 </div>
             </section>
+            <br />
+            <Pagination onChange={(numSkip) => setSkip((numSkip - 1) * 16)
+            } align="center" defaultCurrent={1}  pageSize={50}
+            total={total}  />;
 
-
+            <br /><br />
 
 
         </>
