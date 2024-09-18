@@ -28,7 +28,7 @@ function Header() {
                             <h1 className=" mx-auto font-bold text-center text-3xl">Welcome {user.email}</h1>
 
                         ) : (
-                            <h1 className=" mx-auto font-bold text-center text-3xl">Signin To Order Your Favourite Product</h1>
+                            <h1 className=" mx-auto font-bold text-center text-3xl">Signup Now To get 10% Off</h1>
                         )}
                         {/* <input
                             type="text"

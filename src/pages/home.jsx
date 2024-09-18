@@ -38,7 +38,7 @@ function Home() {
                     <Button className="font-semi-bold" type="primary"> See All</Button>
                 </Link>
             </div>
-            
+
             <section className="text-gray-600 body-font">
 
                 <div className="container px-5 py-24 mx-auto">
@@ -50,11 +50,11 @@ function Home() {
                         ) : (
                             homeProducts.map((data) => (
                                 // console.log(data.thumbnail)
-                                <div className="lg:w-1/4 md:w-1/2 p-4 md:mx-auto mx-auto   shadow my-1  " >
-                                    <Card product={data}  />
-                                <Link  to={`/product/id/${data.id}`} key={data.id} >
-                                    <Button>See More </Button>
-                                </Link>
+                                <div className="lg:w-1/4 md:w-1/2 p-4 md:mx-auto mx-auto transform hover:scale-105 transition-transform duration-300    my-1  " >
+                                    <Card product={data} />
+                                    <Link to={`/product/id/${data.id}`} key={data.id} >
+                                        <Button>See More </Button>
+                                    </Link>
                                 </div>
 
 
