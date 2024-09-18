@@ -59,11 +59,11 @@ function Products() {
                         ) : (
                             products.map((data) => (
                                 <div className="lg:w-1/4 md:w-1/2 p-4 md:mx-auto mx-auto   shadow my-1  " >
-                                <Card product={data}  />
-                            <Link  to={`/product/id/${data.id}`} key={data.id} >
-                                <Button>See More </Button>
-                            </Link>
-                            </div>
+                                    <Card product={data} />
+                                    <Link to={`/product/id/${data.id}`} key={data.id} >
+                                        <Button>See More </Button>
+                                    </Link>
+                                </div>
                             ))
 
                         )}
@@ -78,9 +78,9 @@ function Products() {
             </section>
             <br />
             <br />
-    <Pagination onChange={(num)=>setSkip((num-1)*16)} align="center" defaultCurrent={1} total={total-20} />
-    <br />
-    <br />
+            <Pagination onChange={(num) => setSkip((num - 1) * 16)} align="center" defaultCurrent={1} total={total} pageSize={16} />
+            <br />
+            <br />
 
         </>
     )
