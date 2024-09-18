@@ -3,7 +3,7 @@ import { Card } from "../components/card"
 function Orders(){
     return(
         <>
-        <Card/>
+        <h1>ORDER PAGE</h1>
         </>
     )
 }

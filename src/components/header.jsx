@@ -4,6 +4,8 @@ import { ShoppingCartOutlined } from "@ant-design/icons"
 import { Badge } from "antd"
 import { useContext } from "react"
 import { userContext } from "../context/usercontext"
+import { signOut } from "firebase/auth"
+import { auth } from "../utilities/firebase"
 
 function Header() {
     const { user, setUser } = useContext(userContext)
@@ -109,26 +111,31 @@ function Header() {
                                     </li>
                                 ) : ( */}
                                 <li className="flex text-[15px] max-lg:py-2 px-3 hover:text-[#007bff] hover:fill-[#007bff]">
-                                    {user.isLogin? (
+                                    {user.isLogin ? (
                                         <button className="px-4 py-2 text-sm rounded font-semibold text-[#333] border-2 border-[#333] bg-transparent" onClick={() => {
-                                        setUser({email : '',
-isLogin: false
-                                        })
-                                        navigate('/auth')
-                                    }}>
+                                            signOut(auth).then(() => {
+                                                // Sign-out successful.
+                                                alert("user Succesfully Logged Out")
+                                                navigate('/auth')
+                                              }).catch((error) => {
+                                                console.log(error.message);
+                                                
+                                                // An error happened.
+                                              });
+                                        }}>
 
 
-                                        SignOut
-                                    </button>
-                                    ):(
+                                            SignOut
+                                        </button>
+                                    ) : (
 
-                                    <button className="px-4 py-2 text-sm rounded font-semibold text-[#333] border-2 border-[#333] bg-transparent" onClick={() => {
-                                        navigate("/auth/signup")
-                                    }}>
+                                        <button className="px-4 py-2 text-sm rounded font-semibold text-[#333] border-2 border-[#333] bg-transparent" onClick={() => {
+                                            navigate("/auth/signup")
+                                        }}>
 
 
-                                        SignUp
-                                    </button>
+                                            SignUp
+                                        </button>
                                     )}
                                 </li>
 
