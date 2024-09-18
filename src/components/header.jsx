@@ -109,6 +109,19 @@ function Header() {
                                     </li>
                                 ) : ( */}
                                 <li className="flex text-[15px] max-lg:py-2 px-3 hover:text-[#007bff] hover:fill-[#007bff]">
+                                    {user.isLogin? (
+                                        <button className="px-4 py-2 text-sm rounded font-semibold text-[#333] border-2 border-[#333] bg-transparent" onClick={() => {
+                                        setUser({email : '',
+isLogin: false
+                                        })
+                                        navigate('/auth')
+                                    }}>
+
+
+                                        SignOut
+                                    </button>
+                                    ):(
+
                                     <button className="px-4 py-2 text-sm rounded font-semibold text-[#333] border-2 border-[#333] bg-transparent" onClick={() => {
                                         navigate("/auth/signup")
                                     }}>
@@ -116,6 +129,7 @@ function Header() {
 
                                         SignUp
                                     </button>
+                                    )}
                                 </li>
 
                                 {/* )} */}
