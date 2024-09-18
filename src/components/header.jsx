@@ -22,11 +22,11 @@ function Header() {
 
                     </Link>
                     <div className="flex flex-wrap w-full items-center">
-                        {user ? (
+                        {user.isLogin ? (
                             <h1 className=" mx-auto font-bold text-center text-3xl">Welcome {user.email}</h1>
 
                         ) : (
-                            <h1 font-bold text-center text-3xl>Signin To Order Your Favourite Product</h1>
+                            <h1 className=" mx-auto font-bold text-center text-3xl">Signin To Order Your Favourite Product</h1>
                         )}
                         {/* <input
                             type="text"
