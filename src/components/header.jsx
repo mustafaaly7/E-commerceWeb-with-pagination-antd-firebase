@@ -2,13 +2,16 @@ import { Link, useNavigate } from "react-router-dom"
 import logo from "../images/logo.png"
 import { ShoppingCartOutlined } from "@ant-design/icons"
 import { Badge } from "antd"
+import { useContext } from "react"
+import { userContext } from "../context/usercontext"
 
-function Header(){
+function Header() {
+    const { user, setUser } = useContext(userContext)
     const navigate = useNavigate()
-return(
+    return (
 
-    <>
-   <header className="shadow-md font-[sans-serif] tracking-wide relative z-50">
+        <>
+            <header className="shadow-md font-[sans-serif] tracking-wide relative z-50">
                 <section className="md:flex lg:items-center relative py-3 lg:px-10 px-4 border-gray-200 border-b bg-white lg:min-h-[80px] max-lg:min-h-[60px]">
                     <Link to={"/"} className="max-sm:w-full max-sm:mb-3 shrink-0">
                         <img
@@ -19,11 +22,17 @@ return(
 
                     </Link>
                     <div className="flex flex-wrap w-full items-center">
-                        <input
+                        {user ? (
+                            <h1 className=" mx-auto font-bold text-center text-3xl">Welcome {user.email}</h1>
+
+                        ) : (
+                            <h1 font-bold text-center text-3xl>Signin To Order Your Favourite Product</h1>
+                        )}
+                        {/* <input
                             type="text"
                             placeholder="Search something..."
                             className="xl:w-96 max-lg:w-full lg:ml-10 max-md:mt-4 max-lg:ml-4 bg-gray-100 focus:bg-transparent px-6 rounded h-11 outline-[#333] text-sm transition-all"
-                        />
+                        /> */}
                         <div className="ml-auto max-lg:mt-4">
                             <ul className="flex items-center">
                                 <Link to="/products">
@@ -54,13 +63,13 @@ return(
                                     </li>
                                 </Link>
                                 <Link to="/Orders">
-                                    <li  className="flex text-[15px] max-lg:py-2 px-3 hover:text-[#007bff] hover:fill-[#007bff]">
+                                    <li className="flex text-[15px] max-lg:py-2 px-3 hover:text-[#007bff] hover:fill-[#007bff]">
                                         <Badge count={1} />
-                                    <ShoppingCartOutlined />
-                                       Orders
+                                        <ShoppingCartOutlined />
+                                        Orders
                                     </li>
                                 </Link>
-                              
+
 
 
 
@@ -99,21 +108,21 @@ return(
                                         </button>
                                     </li>
                                 ) : ( */}
-                                    <li className="flex text-[15px] max-lg:py-2 px-3 hover:text-[#007bff] hover:fill-[#007bff]">
-                                        <button className="px-4 py-2 text-sm rounded font-semibold text-[#333] border-2 border-[#333] bg-transparent" onClick={() => {
-                                            navigate("/auth/signup")
-                                        }}>
+                                <li className="flex text-[15px] max-lg:py-2 px-3 hover:text-[#007bff] hover:fill-[#007bff]">
+                                    <button className="px-4 py-2 text-sm rounded font-semibold text-[#333] border-2 border-[#333] bg-transparent" onClick={() => {
+                                        navigate("/auth/signup")
+                                    }}>
 
 
-                                            SignUp
-                                        </button>
-                                    </li>
+                                        SignUp
+                                    </button>
+                                </li>
 
-                                 {/* )} */}
+                                {/* )} */}
 
 
 
-                              
+
                             </ul>
                         </div>
                     </div>
@@ -125,12 +134,12 @@ return(
 
 
 
-    
-    </>
-)
+
+        </>
+    )
 
 }
 
-export{
+export {
     Header
 }
