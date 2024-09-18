@@ -65,7 +65,7 @@ function Products() {
         <>
 
             <div className=" my-6 flex flex-wrap w-1/2 items-center mx-auto">
-                <h1 className="mx-auto font-bold text-4xl">All Products</h1>
+                <h1 className="mx-auto font-bold text-6xl">All Products</h1>
                 <input
                     type="text"
                     placeholder="Search Products Here..."

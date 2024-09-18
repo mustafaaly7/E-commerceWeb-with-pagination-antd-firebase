@@ -33,16 +33,16 @@ function Home() {
     return (
         <>
             <div className="flex justify-around my-6">
-                <h1 className="text-center font-bold text-3xl underline ">Trending Products</h1>
+                <h1 className="text-center font-bold text-6xl  ">Trending Products</h1>
                 <Link to={"/products"}>
-                    <Button className="font-semi-bold" type="primary"> See All</Button>
+                    <Button className="font-semi-bold text-3xl" type="primary"> See All</Button>
                 </Link>
             </div>
 
             <section className="text-gray-600 body-font">
 
-                <div className="container px-5 py-24 mx-auto">
-                    <div className="flex flex-wrap -m-4">
+                <div className=" px-5 py-24 ">
+                    <div className="flex flex-wrap   m-4 gap-x-4 gap-y-2 ">
 
                         {loader ? (
                             <h1 className=" mx-auto text-center font-bold text-6xl text-black ">Loading.....</h1>
@@ -50,7 +50,7 @@ function Home() {
                         ) : (
                             homeProducts.map((data) => (
                                 // console.log(data.thumbnail)
-                                <div className="lg:w-1/4 md:w-1/2 p-4 md:mx-auto mx-auto transform hover:scale-105 transition-transform duration-300    my-1  " >
+                                <div className="lg:w-1/4  p-4 md:mx-auto mx-auto transform hover:scale-105 transition-transform duration-300   border-4 shadow my-1  " >
                                     <Card product={data} />
                                     <Link to={`/product/id/${data.id}`} key={data.id} >
                                         <Button>See More </Button>
