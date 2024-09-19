@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Card } from "../components/card"
 
 import { Link } from "react-router-dom";
-import { SearchOutlined } from "@ant-design/icons";
+import { ArrowDownOutlined, SearchOutlined } from "@ant-design/icons";
 
 
 function Products() {
@@ -26,6 +26,7 @@ function Products() {
         }
 
     }, [])
+    // console.log(categories);
 
 
 
@@ -73,6 +74,17 @@ function Products() {
                     className=" my-3 shadow placeholder:font-bold placeholder:text-2xl border-bold border xl:w-96 max-lg:w-full lg:ml-10 max-md:mt-4 max-lg:ml-4 bg-gray-100 focus:bg-transparent px-6 rounded h-11 outline-[#333] text-sm transition-all"
                 />
 
+                <select  className="border-2 border-blue-500 rounded-lg shadow-md p-2 text-lg font-bold text-gray-700 focus:outline-none focus:border-blue-700 appearance-none relative"
+                > 
+                    <option selected disabled  >Search By Categories</option>
+
+                    {categories.map((data) => (
+                        <option key={data.slug} className="font-bold" >{data.name}</option>
+
+                    ))}
+
+<ArrowDownOutlined/>
+                </select>
 
 
             </div>
@@ -91,7 +103,7 @@ function Products() {
                                 <div className="lg:w-1/4  p-4 md:mx-auto mx-auto transform hover:scale-105 transition-transform duration-300   border-2 shadow my-1  " >
                                     <Card product={data} />
                                     <Link to={`/product/id/${data.id}`} key={data.id} >
-                                        <Button>See More </Button>
+                                        <Button type="primary" >See More </Button>
                                     </Link>
                                 </div>
                             ))

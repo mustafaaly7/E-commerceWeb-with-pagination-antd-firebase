@@ -25,7 +25,7 @@ function Header() {
                     </Link>
                     <div className="flex flex-wrap w-full items-center">
                         {user.isLogin ? (
-                            <h1 className=" mx-auto font-bold text-center text-3xl font-mono">Welcome {user.email}</h1>
+                            <h1 className=" mx-auto font-bold text-center text-3xl font-mono">Welcome <span className="underline">{user.email}</span></h1>
 
                         ) : (
                             <h1 className=" mx-auto font-bold text-center text-3xl font-mono">Signup Now To get 10% Off</h1>
@@ -117,11 +117,11 @@ function Header() {
                                                 // Sign-out successful.
                                                 alert("user Succesfully Logged Out")
                                                 navigate('/auth')
-                                              }).catch((error) => {
+                                            }).catch((error) => {
                                                 console.log(error.message);
-                                                
+
                                                 // An error happened.
-                                              });
+                                            });
                                         }}>
 
 

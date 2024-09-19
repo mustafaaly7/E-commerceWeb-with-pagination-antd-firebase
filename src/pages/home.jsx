@@ -53,7 +53,7 @@ function Home() {
                                 <div className="lg:w-1/4  p-4 md:mx-auto mx-auto transform hover:scale-105 transition-transform duration-300   border-4 shadow my-1  " >
                                     <Card product={data} />
                                     <Link to={`/product/id/${data.id}`} key={data.id} >
-                                        <Button>See More </Button>
+                                        <Button type="primary">See More </Button>
                                     </Link>
                                 </div>
 
