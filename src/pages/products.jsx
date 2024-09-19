@@ -65,17 +65,16 @@ function Products() {
     return (
         <>
 
+                <h1 className="mx-auto font-bold text-center my-4 underline text-6xl">All Products</h1>
             <div className=" my-6 flex flex-wrap w-1/2 items-center mx-auto">
-                <h1 className="mx-auto font-bold text-6xl">All Products</h1>
                 <input
                     type="text"
                     placeholder="Search Products Here..."
                     onChange={(e) => setSearched(e.target.value)}
                     className=" my-3 shadow placeholder:font-bold placeholder:text-2xl border-bold border xl:w-96 max-lg:w-full lg:ml-10 max-md:mt-4 max-lg:ml-4 bg-gray-100 focus:bg-transparent px-6 rounded h-11 outline-[#333] text-sm transition-all"
                 />
-
-                <select  className="border-2 border-blue-500 rounded-lg shadow-md p-2 text-lg font-bold text-gray-700 focus:outline-none focus:border-blue-700 appearance-none relative"
-                > 
+<br />
+                <select className="border-2 shadow mx-auto  font-bold text-xl border-black"> 
                     <option selected disabled  >Search By Categories</option>
 
                     {categories.map((data) => (
