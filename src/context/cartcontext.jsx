@@ -42,10 +42,10 @@ function CartContextProvider({ children }) {
         const arr = [...cartItem]
         const itemIndex = arr.findIndex((data) => data.id == id)
 
-        if (type == "+") {
-            arr[findIndex].quantity++
+        if (type == "plus") {
+            arr[itemIndex].quantity++
         } else {
-            arr[findIndex].quantity--
+            arr[itemIndex].quantity--
         }
         setCartItems([...arr])
     }
