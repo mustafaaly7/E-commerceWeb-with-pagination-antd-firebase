@@ -42,11 +42,11 @@ function Orders() {
                         <h1 className="text-bold text-2xl">${data.price}</h1>
 
                         <div className="flex gap-3 my-3">
-                            <Button className="border-blue-500 text-bold text-2xl" onClick={() => updateCart(data.id, "plus")}>
+                            <Button className="border-blue-500 text-bold text-2xl bg-blue-500 text-white" onClick={() => updateCart(data.id, "plus")}>
                                 +
                             </Button>
                             <h1 className="text-bold text-2xl">{data.quantity}</h1>
-                            <Button className="border-blue-500 text-bold text-2xl"
+                            <Button className="border-blue-500 text-bold text-2xl bg-blue-500 text-white"
                                 onClick={() => {
                                     if (data.quantity <= 1) {
                                         removeCart(data.id);
@@ -64,7 +64,7 @@ function Orders() {
             }
 
             <div>
-                
+
             </div>
         </div>
     );

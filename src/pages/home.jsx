@@ -48,7 +48,9 @@ function Home() {
                     <div className="flex flex-wrap   m-4 gap-x-4 gap-y-2 ">
 
                         {loader ? (
-                            <h1 className=" mx-auto text-center font-bold text-6xl text-black ">Loading.....</h1>
+                            // loader 
+                            <div className=" mx-auto custom-loader"></div>
+                            
 
                         ) : (
                             homeProducts.map((data) => (

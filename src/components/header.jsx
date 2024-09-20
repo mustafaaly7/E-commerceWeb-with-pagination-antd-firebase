@@ -28,17 +28,22 @@ function Header() {
 
                     </Link>
                     <div className="flex flex-wrap w-full items-center">
-                        {user.isLogin ? (
-                            <h1 className=" mx-auto font-bold text-center text-3xl font-mono">Welcome <span className="underline">{user.email}</span></h1>
+                        
+                      <div id="containerAnimation" className=" mx-auto container-bottom-to-up">
+  {/* <p class="top-to-bottom">hello me</p> */}
 
+                        {user.isLogin ? (
+                            <h1 className=" mx-auto font-bold text-center text-3xl font-mono top-to-bottom">Welcome <span className="underline">{user.email}</span></h1>
+                            
                         ) : (
-                            <h1 className=" mx-auto font-bold text-center text-3xl font-mono">Signup Now To get 10% Off</h1>
+                            <h1 className="top-to-bottom  font-bold text-center text-3xl font-mono">Signup Now To get 10% Off</h1>
                         )}
+                        </div>
                         {/* <input
                             type="text"
                             placeholder="Search something..."
                             className="xl:w-96 max-lg:w-full lg:ml-10 max-md:mt-4 max-lg:ml-4 bg-gray-100 focus:bg-transparent px-6 rounded h-11 outline-[#333] text-sm transition-all"
-                        /> */}
+                            /> */}
                         <div className="ml-auto max-lg:mt-4">
                             <ul className="flex items-center">
                                 <Link to="/products">
