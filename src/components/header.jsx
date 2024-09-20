@@ -6,8 +6,12 @@ import { useContext } from "react"
 import { userContext } from "../context/usercontext"
 import { signOut } from "firebase/auth"
 import { auth } from "../utilities/firebase"
+import { CartContext, CartContextProvider } from "../context/cartcontext"
 
 function Header() {
+    const {cartItem} = useContext(CartContext)
+    console.log("cartItems" , cartItem);
+    
     const { user, setUser } = useContext(userContext)
     const navigate = useNavigate()
     return (
@@ -66,7 +70,7 @@ function Header() {
                                 </Link>
                                 <Link to="/Orders">
                                     <li className="flex text-[15px] max-lg:py-2 px-3 hover:text-[#007bff] hover:fill-[#007bff]">
-                                        <Badge count={1} />
+                                        <Badge count={cartItem.length} />
                                         <ShoppingCartOutlined />
                                         Orders
                                     </li>

@@ -1,12 +1,14 @@
 import { Button, Pagination } from "antd";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Card } from "../components/card"
 
 import { Link } from "react-router-dom";
 import { ArrowDownOutlined, SearchOutlined } from "@ant-design/icons";
+import { CartContext } from "../context/cartcontext";
 
 
 function Products() {
+    const { AddtoCart,isItemAdded } = useContext(CartContext)
     const [products, setProducts] = useState([])
     const [searched, setSearched] = useState('')
     const [loader, setLoader] = useState(false)
@@ -65,7 +67,7 @@ function Products() {
     return (
         <>
 
-                <h1 className="mx-auto font-bold text-center my-4 underline text-6xl">All Products</h1>
+            <h1 className="mx-auto font-bold text-center my-4 underline text-6xl">All Products</h1>
             <div className=" my-6 flex flex-wrap w-1/2 items-center mx-auto">
                 <input
                     type="text"
@@ -73,8 +75,8 @@ function Products() {
                     onChange={(e) => setSearched(e.target.value)}
                     className=" my-3 shadow placeholder:font-bold placeholder:text-2xl border-bold border xl:w-96 max-lg:w-full lg:ml-10 max-md:mt-4 max-lg:ml-4 bg-gray-100 focus:bg-transparent px-6 rounded h-11 outline-[#333] text-sm transition-all"
                 />
-<br />
-                <select className="border-2 shadow mx-auto  font-bold text-xl border-black"> 
+                <br />
+                <select className="border-2 shadow mx-auto  font-bold text-xl border-black">
                     <option selected disabled  >Search By Categories</option>
 
                     {categories.map((data) => (
@@ -82,7 +84,7 @@ function Products() {
 
                     ))}
 
-<ArrowDownOutlined/>
+                    <ArrowDownOutlined />
                 </select>
 
 
@@ -104,6 +106,13 @@ function Products() {
                                     <Link to={`/product/id/${data.id}`} key={data.id} >
                                         <Button type="primary" >See More </Button>
                                     </Link>
+
+                                    <Button type="primary" className="mx-3" onClick={() => AddtoCart(data)} > {isItemAdded(data.id)?(
+                                      `Added ${isItemAdded(data.id).quantity}`  
+                                    ):(
+                                        `Add To Cart`  
+                                    ) 
+                                }</Button>
                                 </div>
                             ))
 

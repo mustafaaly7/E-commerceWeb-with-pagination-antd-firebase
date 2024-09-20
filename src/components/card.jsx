@@ -11,6 +11,7 @@ function Card({ product }) {
     <>
       <div className="lg:w-1/4 md:w-1/2 p-4 w-full ">
         <Image
+        preview={false}
           width={200}
           src={product.thumbnail}
         />
