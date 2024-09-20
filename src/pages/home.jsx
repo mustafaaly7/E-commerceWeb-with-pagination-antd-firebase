@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import { Card } from "../components/card"
 import { Button } from "antd";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { CartContext } from "../context/cartcontext";
 
 
 function Home() {
+    const { AddtoCart,isItemAdded } = useContext(CartContext)
+
     const [homeProducts, setHomeProducts] = useState([])
     const [loader, setLoader] = useState(false)
 
@@ -55,6 +58,14 @@ function Home() {
                                     <Link to={`/product/id/${data.id}`} key={data.id} >
                                         <Button type="primary">See More </Button>
                                     </Link>
+
+                                    <Button type="primary" className="mx-3" onClick={() => AddtoCart(data)} > {isItemAdded(data.id)?(
+                                      `Added ${isItemAdded(data.id).quantity}`  
+                                    ):(
+                                        `Add To Cart`  
+                                    ) 
+                                }</Button>
+
                                 </div>
 
 
