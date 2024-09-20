@@ -25,19 +25,51 @@ function CartContextProvider({ children }) {
     }, [cartItem])
 
 
-function AddtoCart(item){
+    function AddtoCart(item) {
+        const arr = [...cartItem]
+        const itemIndex = arr.findIndex((data) => data.id == item.id)
+        if (itemIndex == -1) {
+            arr.push({ ...item, quantity: 1 })
+            // console.log(arr);
+
+        } else {
+            arr[itemIndex].quantity++
+        }
+        setCartItems([...arr])
+    }
+
+    const updateCart = (id, type) => {
+        const arr = [...cartItem]
+        const itemIndex = arr.findIndex((data) => data.id == id)
+
+        if (type == "+") {
+            arr[findIndex].quantity++
+        } else {
+            arr[findIndex].quantity--
+        }
+        setCartItems([...arr])
+    }
+
+
+
+    const removeCart = (id) => {
+        const arr = [...cartItem]
+        const findIndex = arr.findIndex((data) => data.id == id)
+        arr.splice(findIndex, 1)
+        setCartItems([...arr])
+    }
+
+    const isItemAdded = (id) => {
 const arr = [...cartItem]
-const itemIndex = arr.findIndex((data)=>data.id == item.id)
-if(itemIndex == -1){
-arr.push({...item, quantity : 1})
-// console.log(arr);
+const findIndex = arr.findIndex((data)=> data.id == id)
+if(findIndex == -1){
+    return null
 
 }else{
-    arr[itemIndex].quantity ++
-}
-setCartItems([...arr])
+    return arr[findIndex]
 }
 
+    }
 
 
 
@@ -46,7 +78,11 @@ setCartItems([...arr])
     return (
 
 
-        <CartContext.Provider value={{cartItem ,setCartItems}}>
+        <CartContext.Provider value={{
+            cartItem, setCartItems, AddtoCart, updateCart
+            , removeCart,
+            isItemAdded
+        }}>
             {children}
         </CartContext.Provider>
     )
