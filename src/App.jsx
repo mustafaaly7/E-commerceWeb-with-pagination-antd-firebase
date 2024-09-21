@@ -10,6 +10,7 @@ import { Products } from './pages/products'
 import { Orders } from './pages/orders'
 import { ProductDetail } from './pages/ProductDetail'
 import { Profile } from './pages/profile'
+import { NotFound } from './pages/notFound'
 
 function App() {
 
@@ -37,6 +38,10 @@ function App() {
             <Route path='profile/:username' element={<Profile />} />
 
           </Route>
+<Route path='*'  element={<NotFound/>} />
+
+
+
 
         </Routes>
       </BrowserRouter>

@@ -27,7 +27,7 @@ function Orders() {
                 <div className="flex-grow border border-blue-600  bg-blue-600 rounded flex justify-center items-center p-5">
                     <h1 className="text-2xl font-semibold text-white"> YOUR TOTAL BILL : <span className="underline">${Math.floor(totalPrice)}</span></h1>
                 </div>
-                <div className="flex-grow border bg-blue-600 hover:bg-blue-500 border-blue-600 rounded flex justify-center items-center p-5">
+                <div className="flex-grow border bg-blue-600 cursor-pointer hover:bg-blue-500 border-blue-600 rounded flex justify-center items-center p-5">
                     <h1 className="text-2xl font-semibold text-white">
                         Proceed to Checkout
 
