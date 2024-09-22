@@ -5,7 +5,7 @@ import { Button, Image } from "antd"
 import CheckoutModal from "../components/checkoutModal"
 
 function Orders() {
-    const [isModalOpen, setIsModalOpen] = useState(true);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const { cartItem, setCartItems, AddtoCart, updateCart
         , removeCart,
@@ -18,6 +18,21 @@ function Orders() {
     )
     const totalQuantity = cartItem.reduce((value, data) => data.quantity + value, 0)
     // console.log(totalQuantity);
+const checkOutOrder = async(values)=>{
+const checkOutobject = {
+    ...values,
+    status : "pending",
+    totalPrice : totalPrice,
+    totalQuantity : totalQuantity,
+    items : cartItem.map((data)=>(
+        `productTitle : ${data.title} , price : ${data.price} , quantity : ${data.quantity}`
+    )
+        
+    )
+}
+}
+
+
 
 
 
@@ -27,7 +42,7 @@ function Orders() {
 isModalOpen={isModalOpen}
 handleOk={()=>setIsModalOpen(false)}
 handleCancel={()=>setIsModalOpen(false)}
-
+checkoutOrder={checkOutOrder}
 />
 
 

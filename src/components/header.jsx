@@ -10,7 +10,7 @@ import { CartContext, CartContextProvider } from "../context/cartcontext"
 
 function Header() {
     const {cartItem} = useContext(CartContext)
-    console.log("cartItems" , cartItem);
+    // console.log("cartItems" , cartItem);
     
     const { user, setUser } = useContext(userContext)
     const navigate = useNavigate()
