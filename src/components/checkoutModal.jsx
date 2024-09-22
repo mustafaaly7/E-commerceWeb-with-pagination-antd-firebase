@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form, Input, Modal } from 'antd';
 import { auth } from '../utilities/firebase';
+import { useNavigate } from 'react-router-dom';
 
 const CheckoutModal = ({ showModal,
   handleOk,
   handleCancel, isModalOpen,
   setIsModalOpen,checkoutOrder }) => {
+
+    const navigate = useNavigate()
     useEffect(() => {
       return setContinueasGuest(false);
     }, []);
@@ -21,7 +24,7 @@ const[continueAsGuest , setContinueasGuest] =useState(false)
 
 
         <div className=" flex flex-col gap-10 justify-center  items-center my-5">
-          <Button className='text-3xl font-bold'>Signup</Button>
+          <Button className='text-3xl font-bold' onClick={()=>navigate("/auth/signup")}>Signup</Button>
           <h1 className='text-3xl font-bold'>OR</h1>
           <Button className='text-3xl font-bold' onClick={()=> setContinueasGuest(true)}>Continue as a Guest </Button>
 
