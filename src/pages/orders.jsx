@@ -1,9 +1,12 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { Card } from "../components/card"
 import { CartContext } from "../context/cartcontext"
 import { Button, Image } from "antd"
+import CheckoutModal from "../components/checkoutModal"
 
 function Orders() {
+    const [isModalOpen, setIsModalOpen] = useState(true);
+
     const { cartItem, setCartItems, AddtoCart, updateCart
         , removeCart,
         isItemAdded } = useContext(CartContext)
@@ -20,6 +23,15 @@ function Orders() {
 
     return (
         <div className="container mx-auto">
+<CheckoutModal
+isModalOpen={isModalOpen}
+handleOk={()=>setIsModalOpen(false)}
+handleCancel={()=>setIsModalOpen(false)}
+
+/>
+
+
+
             <div className="flex gap-4 my-4">
                 <div className="flex-grow border border-blue-600 bg-blue-600 rounded flex justify-center items-center p-5">
                     <h1 className="text-2xl font-semibold text-white ">TOTAL QUANTITY : <span className="underline">{totalQuantity}</span></h1>
@@ -27,7 +39,7 @@ function Orders() {
                 <div className="flex-grow border border-blue-600  bg-blue-600 rounded flex justify-center items-center p-5">
                     <h1 className="text-2xl font-semibold text-white"> YOUR TOTAL BILL : <span className="underline">${Math.floor(totalPrice)}</span></h1>
                 </div>
-                <div className="flex-grow border bg-blue-600 cursor-pointer hover:bg-blue-500 border-blue-600 rounded flex justify-center items-center p-5">
+                <div onClick={() => setIsModalOpen(true)} className="flex-grow border bg-blue-600 cursor-pointer hover:bg-blue-500 border-blue-600 rounded flex justify-center items-center p-5">
                     <h1 className="text-2xl font-semibold text-white">
                         Proceed to Checkout
 

@@ -1,29 +1,40 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
-const App = ({}) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+
+const CheckoutModal = ({ showModal,
+  handleOk,
+  handleCancel, isModalOpen,
+  setIsModalOpen }) => {
+  
   return (
     <>
-      <Button type="primary" onClick={showModal}>
-        Open Modal
-      </Button>
+
       <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+
+
+
+        <div className=" flex justify-center  items-center my-5">
+          <Button className='text-3xl font-bold'>Signup</Button>
+          <h1 className='text-3xl font-bold'>OR</h1>
+          <Button className='text-3xl font-bold'>Continue as a Guest </Button>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
       </Modal>
     </>
   );
 };
-export default App;
+export default CheckoutModal;
 
 
