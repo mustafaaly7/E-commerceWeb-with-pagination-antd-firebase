@@ -9,11 +9,11 @@ const CheckoutModal = ({ showModal,
   return (
     <>
 
-      <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+      <Modal title="Before U checkout" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
 
 
 
-        <div className=" flex justify-center  items-center my-5">
+        <div className=" flex flex-col gap-10 justify-center  items-center my-5">
           <Button className='text-3xl font-bold'>Signup</Button>
           <h1 className='text-3xl font-bold'>OR</h1>
           <Button className='text-3xl font-bold'>Continue as a Guest </Button>
