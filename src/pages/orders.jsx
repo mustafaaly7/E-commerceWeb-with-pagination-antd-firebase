@@ -1,15 +1,18 @@
 import { useContext, useState } from "react"
 import { Card } from "../components/card"
 import { CartContext } from "../context/cartcontext"
-import { Button, Image } from "antd"
+import { Button, Image, message } from "antd"
 import CheckoutModal from "../components/checkoutModal"
+import { addDoc, auth, collection, db } from "../utilities/firebase"
+import { useNavigate } from "react-router-dom"
 
 function Orders() {
+    const navigate = useNavigate()
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const { cartItem, setCartItems, AddtoCart, updateCart
         , removeCart,
-        isItemAdded } = useContext(CartContext)
+        isItemAdded ,ClearCart} = useContext(CartContext)
 
 
     const totalPrice = cartItem.reduce(
@@ -18,19 +21,29 @@ function Orders() {
     )
     const totalQuantity = cartItem.reduce((value, data) => data.quantity + value, 0)
     // console.log(totalQuantity);
-const checkOutOrder = async(values)=>{
-const checkOutobject = {
-    ...values,
-    status : "pending",
-    totalPrice : totalPrice,
-    totalQuantity : totalQuantity,
-    items : cartItem.map((data)=>(
-        `productTitle : ${data.title} , price : ${data.price} , quantity : ${data.quantity}`
-    )
-        
-    )
-}
-}
+    const checkOutOrder = async (values) => {
+        const checkOutobject = {
+            ...values,
+            status: "pending",
+            totalPrice: totalPrice,
+            totalQuantity: totalQuantity,
+            user: auth.currentUser ? auth.currentUser.uid : "guest",
+            items: cartItem.map((data) => (
+                `productTitle : ${data.title} , price : ${data.price} , quantity : ${data.quantity}`
+            )
+
+            )
+        }
+
+        const docRef = addDoc(collection(db,"order"),checkOutobject).then(message.success("Your Order succesfully has been placed"))
+
+        const encodedTxt = encodeURI(JSON.stringify(checkOutobject))
+        // console.log("encoded txt" ,encodedTxt);
+        window.open(`https://wa.me/923042281289?text=${encodedTxt}`, "_blank")
+        ClearCart()
+        setIsModalOpen(false)
+navigate("/")
+    }
 
 
 
@@ -38,12 +51,12 @@ const checkOutobject = {
 
     return (
         <div className="container mx-auto">
-<CheckoutModal
-isModalOpen={isModalOpen}
-handleOk={()=>setIsModalOpen(false)}
-handleCancel={()=>setIsModalOpen(false)}
-checkoutOrder={checkOutOrder}
-/>
+            <CheckoutModal
+                isModalOpen={isModalOpen}
+                handleOk={() => setIsModalOpen(false)}
+                handleCancel={() => setIsModalOpen(false)}
+                checkoutOrder={checkOutOrder}
+            />
 
 
 

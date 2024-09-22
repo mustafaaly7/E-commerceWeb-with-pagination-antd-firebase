@@ -71,7 +71,9 @@ if(findIndex == -1){
 
     }
 
-
+function ClearCart(){
+    setCartItems([])
+}
 
 
 
@@ -81,7 +83,7 @@ if(findIndex == -1){
         <CartContext.Provider value={{
             cartItem, setCartItems, AddtoCart, updateCart
             , removeCart,
-            isItemAdded
+            isItemAdded,ClearCart
         }}>
             {children}
         </CartContext.Provider>
